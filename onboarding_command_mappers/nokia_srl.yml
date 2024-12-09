@@ -13,8 +13,3 @@ sync_devices:
       parser: "none"
       jpath: "basic system info.Serial Number"
   
-  device_type:
-    commands:
-      command: "show version | as json"
-      parser: "none"
-      jpath: "basic system info.Chassis Type"
