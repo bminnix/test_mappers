@@ -23,4 +23,4 @@ sync_devices:
     commands:
       command: "show interface all | as json"
       parser: "raw"
-      jpath: '"interfaces.*.{name: name, match_ip: interfaceAddress.ipAddr.address==`{{ obj }}`}[?match_ip].name'"
+      jpath: '"interfaces.*.{name: name, match_ip: interfaceAddress.ipAddr.address==`{{ obj }}`}[?match_ip].name"'
