@@ -22,9 +22,9 @@ sync_devices:
 
   mgmt_interface:
     commands:
-      - command: "show interface all | as json"
-        parser: "none"
-        jpath: "interfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name if [0]"
+      # - command: "show interface all | as json"
+      #   parser: "none"
+      #   jpath: "interfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name if [0]"
 
       - command: "show interface all | as json"
         parser: "none"
@@ -32,9 +32,9 @@ sync_devices:
 
   mask_length:
     commands:
-      - command: "show interface all | as json"
-        parser: "none"
-        jpath: "interfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length if [0]"
+      # - command: "show interface all | as json"
+      #   parser: "none"
+      #   jpath: "interfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length if [0]"
 
       - command: "show interface all | as json"
         parser: "none"
