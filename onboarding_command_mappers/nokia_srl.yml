@@ -19,20 +19,16 @@ sync_devices:
       parser: "none"
       jpath: '"basic system info"."Chassis Type"'
 
-
-
-
-
   mgmt_interface:
     commands:
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name"
+        jpath: '"interfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name"'
         post_processor: "{{ obj[0] }}"
         iterable_type: "str"
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].subinterfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name"
+        jpath: '"interfaces[].subinterfaces[].{name: name, address: address[?prefix==`{{ obj.split('/')[0] }}`]} | [0].name"'
         post_processor: "{{ obj[0] }}"
         iterable_type: "str"
 
@@ -40,12 +36,12 @@ sync_devices:
     commands:
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length"
+        jpath: '"interfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length"'
         post_processor: "{{ obj[0] }}"
         iterable_type: "str"
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].subinterfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length"
+        jpath: '"interfaces[].subinterfaces[].{name: name, mask_length: address[?prefix==`{{ obj.split('/')[1] }}`]} | [0].mask_length"'
         post_processor: "{{ obj[0] }}"
         iterable_type: "str"
 
