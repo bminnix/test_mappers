@@ -19,6 +19,7 @@ sync_devices:
         parser: "none"
         jpath: '"basic system info"."Chassis Type"'
 
+
   mgmt_interface:
     commands:
       - command: "show interface all | as json"
