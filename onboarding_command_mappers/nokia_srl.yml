@@ -20,14 +20,14 @@ sync_devices:
       command: "show interface all | as json"
       parser: "none"
       jpath: >-
-        (interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].name ||
-         interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].name)[0]
+        (interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}/')]}[?match_ip].name ||
+         interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}/')]}[?match_ip].name)[0]
   mask_length:
     commands:
       command: "show interface all | as json"
       parser: "none"
       jpath: >-
-        (interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].match_ip[0] ||
-         interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].match_ip[0])[0]
+        (interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}/')]}[?match_ip].match_ip[0] ||
+         interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}/')]}[?match_ip].match_ip[0])[0]
       post_processor: "{{ obj.split('/')[1] }}"
       iterable_type: "int"
