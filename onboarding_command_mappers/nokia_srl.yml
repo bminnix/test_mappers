@@ -19,19 +19,11 @@ sync_devices:
     commands:
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].name"
-      - command: "show interface all | as json"
-        parser: "none"
-        jpath: "interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].name"
+        jpath: "interfaces.*.{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].name"
   mask_length:
     commands:
       - command: "show interface all | as json"
         parser: "none"
-        jpath: "interfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].match_ip[0]"
-        post_processor: "{{ obj[0].split('/')[1] }}"
-        iterable_type: "int"
-      - command: "show interface all | as json"
-        parser: "none"
-        jpath: "interfaces[].subinterfaces[].{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].match_ip[0]"
+        jpath: "interfaces.*.{name: name, match_ip: address[].prefix|[?contains(@, '{{ obj }}')]}[?match_ip].match_ip[0]"
         post_processor: "{{ obj[0].split('/')[1] }}"
         iterable_type: "int"
